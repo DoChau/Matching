@@ -9,9 +9,15 @@
 :root {
 	--txt-1: hsl(220 10% 98%);
 	--bg-1: hsl(220 20% 10%);
-	--bg-2: hsl(220 20% 20%);
+	--bg-2: hsla(0, 100%, 99%, 0.274);
+	--bg-3: hsla(252, 60%, 33%, 0.616);
 	--border: hsl(180 100% 50%);
 	--pulse: hsl(9 100% 64%);
+
+	--background: #005;
+	--primary: #88D5BF;
+	--secondary: #5D6BF8;
+	--third: #e27fcb;
 }
 
 html,
@@ -26,6 +32,12 @@ body {
 	font-family: 'Poppins', sans-serif;
 	color: var(--txt-1);
 	background-color: var(--bg-1);
+
+	/*background: linear-gradient(270deg, #00ffbd, #ffee00, #ff8bfb);
+    background-size: 600% 600%;
+	-webkit-animation: GradientBG 30s ease infinite;
+    -moz-animation: GradientBG 30s ease infinite;
+    animation: GradientBG 30s ease infinite;*/
 }
 
 h1 {
@@ -52,3 +64,22 @@ button {
 	text-transform: uppercase;
 	cursor: pointer;
 }
+
+
+@-webkit-keyframes GradientBG {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes GradientBG {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes GradientBG {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+ 
