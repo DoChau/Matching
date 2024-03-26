@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { emoji } from './emoji'
+	import { coin } from './emoji'
+
 	type State = 'start' | 'playing' | 'paused' | 'won' | 'lost'
 
 	let state: State = 'start'
@@ -11,6 +13,7 @@
 	let timerId: number | null = null
 	let time = 60
 
+	let emojis = coin && emoji
 	function createGrid() {
 		// only want unique cards
 		let cards = new Set<string>()
@@ -19,8 +22,8 @@
 
 		while (cards.size < maxSize) {
 			// pick random emoji
-			const randomIndex = Math.floor(Math.random() * emoji.length)
-			cards.add(emoji[randomIndex])
+			const randomIndex = Math.floor(Math.random() * emojis.length)
+			cards.add(emojis[randomIndex])
 		}
 
 		// duplicate and shuffle cards
@@ -77,12 +80,12 @@
 		time = 60
 	}
 
-	function gameWon() {
+	export function gameWon() {
 		state = 'won'
 		resetGame()
 	}
 
-	function gameLost() {
+	export function gameLost() {
 		state = 'lost'
 		resetGame()
 	}
@@ -175,12 +178,11 @@
 		padding: 5rem;
 		//border-radius: 1rem;
 		
-
 		background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
 		animation: morph 8s ease-in-out infinite;
 		border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
 		transition: all 1s ease-in-out;
-z-index: 5;
+		z-index: 5;
 		
 	}
 
