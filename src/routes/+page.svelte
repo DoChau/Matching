@@ -13,7 +13,7 @@
 	let timerId: number | null = null
 	let time = 60
 
-	let emojis = coin && emoji
+	emoji.push(...coin)	
 	function createGrid() {
 		// only want unique cards
 		let cards = new Set<string>()
@@ -22,8 +22,8 @@
 
 		while (cards.size < maxSize) {
 			// pick random emoji
-			const randomIndex = Math.floor(Math.random() * emojis.length)
-			cards.add(emojis[randomIndex])
+			const randomIndex = Math.floor(Math.random() * emoji.length)
+			cards.add(emoji[randomIndex])
 		}
 
 		// duplicate and shuffle cards
