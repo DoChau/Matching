@@ -1,7 +1,14 @@
 <script lang="ts">
 	import { emoji } from './emoji'
-	import { coin } from './emoji'
+	import coin1 from '../lib/images/Beon-Coin-Gold.png'
+	import coin2 from '../lib/images/Beon-Coin-Silver.png'
+	import coin3 from '../lib/images/Beon-Coin-Bronze.png'
 
+	const coin = [
+		coin1,
+		coin2,
+		coin3
+	]
 	type State = 'start' | 'playing' | 'paused' | 'won' | 'lost'
 
 	let state: State = 'start'
@@ -105,6 +112,7 @@
 </script>
 
 <svelte:window on:keydown={pauseGame} />
+<body>
 
 {#if state === 'start'}
 	<h1>Matching game</h1>
@@ -116,16 +124,17 @@
 {/if}
 
 {#if state === 'playing'}
+	<div class="logo">
+		{#each coin as coin}
+			<img src={coin} alt="coin" width="100px"/>
+		{/each}
+	</div>
 	<div class="progress">
-		<h1 class="timer" class:pulse={time <= 10}>
+		<h1 class="timer" class:pulse={time <= 5}>
 			{time}
 		</h1>
-
-		<div class="timerround" class:pulseround={time <= 10} style="--duration: 60;--size: 150;">
-			<div class="mask"></div>
-		</div>
 	</div>
-
+	
 	<div class="matches">
 		{#each matches as card}
 			<div>{card}</div>
@@ -170,6 +179,7 @@
 	</div>
 
 {/if}
+</body>
 
 <style>
 	.cards {
@@ -230,49 +240,28 @@
 		margin-block: 2rem;
 		font-size: 3rem;
 	}
-
+	.logo{
+		position: relative;
+		align-self: center;
+	}
 	.progress{
-		display: flex;
+		position: relative;
 		justify-content: center;		
 	}
 	.timer {
+		
 		transition: color 0.3s ease;
 		width:80px;
 		height:80px;
 	}
 
-	.timerround {
-		background: -webkit-linear-gradient(left, skyBlue 50%, #eee 50%);
-		border-radius: 100%;
-		height: calc(var(--size) * 1px);
-		width: calc(var(--size) * 1px);
-		margin-top: -30px;
-		margin-left: -115px;
-		-webkit-animation: timeround calc(var(--duration) * 1s) steps(1000, start) infinite;
-		-webkit-mask: radial-gradient(transparent 50%,#000 50%);
-		mask: radial-gradient(transparent 50%,#000 50%);
-	}
-	.mask {
-		border-radius: 100% 0 0 100% / 50% 0 0 50%;
-		height: 100%;
-		left: 0;
-		position: absolute;
-		top: 0;
-		width: 50%;
-		-webkit-animation: mask calc(var(--duration) * 1s) steps(500, start) infinite;
-		-webkit-transform-origin: 100% 50%;
-	}
-	
 	.pulse {
+		
 		color: var(--pulse);
 		width:80px;
 		height:80px;
 		animation: pulse 1s infinite ease;
 	}
-	.pulseround {
-		display:none;
-	}
-
 	@keyframes pulse {
 		to {
 			scale: 1.4;
