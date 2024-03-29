@@ -22,7 +22,6 @@
 	coin.forEach(item => {
 		emoji.push=(item)
 	})
-	console.log(emoji)
 	function createGrid() {
 		// only want unique cards
 		let cards = new Set<string>()
@@ -245,7 +244,10 @@
 	}
 	.logo{
 		position: relative;
-		align-self: center;
+		display: flex;
+		align-items: flex-end;
+		height: 20vh;
+
 	}
 	.progress{
 		position: relative;
