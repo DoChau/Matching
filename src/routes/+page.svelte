@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { emoji } from './emoji'
+	import { coin } from './emoji'
 
 	type State = 'start' | 'playing' | 'paused' | 'won' | 'lost'
 
@@ -11,7 +12,10 @@
 	let matches: string[] = []
 	let timerId: number | null = null
 	let time = 60
-
+	coin.forEach(item => {
+		emoji.push=(item)
+	})
+	console.log(emoji)
 	function createGrid() {
 		// only want unique cards
 		let cards = new Set<string>()
