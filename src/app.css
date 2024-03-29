@@ -22,17 +22,21 @@
 
 html,
 body {
-	height: 100%;
+	width: 95%;
 }
 
 body {
 	display: grid;
 	place-content: center;
+	align-items: center;
 	justify-items: center;
-	padding: 2rem;
+	justify-content: center;
+	padding: 0;
+	margin: 5vw;
 	font-family: 'Poppins', sans-serif;
 	color: var(--txt-1);
 	background-color: var(--bg-1);
+	
 
 	/*background: linear-gradient(270deg, #00ffbd, #ffee00, #ff8bfb);
     background-size: 600% 600%;

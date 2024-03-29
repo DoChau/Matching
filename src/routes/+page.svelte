@@ -135,12 +135,6 @@
 		</h1>
 	</div>
 	
-	<div class="matches">
-		{#each matches as card}
-			<div>{card}</div>
-		{/each}
-	</div>
-
 	<div class="cards">
 		{#each grid as card, cardIndex}
 			{@const isSelected = selected.includes(cardIndex)}
@@ -161,6 +155,13 @@
 			</button>
 		{/each}
 	</div>
+
+	<div class="matches">
+		{#each matches as card}
+			<div>{card}</div>
+		{/each}
+	</div>
+
 {/if}
 
 {#if state === 'lost'}
@@ -172,10 +173,9 @@
 	<h1>You win! 🎉</h1>
 	<button on:click={() => (state = 'playing')}>Play again</button>
 	
-	//FIREWORK
 	<div class="pyro">
-		<div class="before"></div>
-		<div class="after"></div>
+		<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+		<dotlottie-player src="https://lottie.host/16d47f14-fa4c-464c-87b5-2bedfc307e96/POP0jGqTWe.json" background="transparent" speed="0.5" style="width: 800px; height: 800px" direction="1" playMode="normal" loop autoplay></dotlottie-player>	
 	</div>
 
 {/if}
@@ -184,10 +184,13 @@
 <style>
 	.cards {
 		display: grid;
+		max-width: 90%;
+		align-items: center;
+		justify-content: center;
 		grid-template-columns: repeat(5, 1fr);
 		gap: 1rem;
 		background-color: var(--bg-2);
-		padding: 5rem;
+		padding: 2rem;
 		//border-radius: 1rem;
 		
 		background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
@@ -199,9 +202,9 @@
 	}
 
 	.card {
-		height: 140px;
-		width: 140px;
-		font-size: 4rem;
+		height: 15vw;
+		width: 15vw;
+		font-size: 3rem;
 		background-color: var(--bg-3);
 		transition: rotate 0.3s ease-out;
 		transform-style: preserve-3d;
@@ -238,7 +241,7 @@
 		display: flex;
 		gap: 1rem;
 		margin-block: 2rem;
-		font-size: 3rem;
+		font-size: 2rem;
 	}
 	.logo{
 		position: relative;
@@ -284,30 +287,5 @@
 			background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
 		} 
 	}
-
-	@-webkit-keyframes timeround {
-		100% {
-			-webkit-transform: rotate(360deg);
-		}
-	}
-	@-webkit-keyframes mask {
-		0% {
-			background: #eee;
-			-webkit-transform: rotate(0deg);
-		}
-		50% {
-			background: #eee;
-			-webkit-transform: rotate(-180deg);
-		}
-		50.01% {
-			background: skyBlue;
-			-webkit-transform: rotate(0deg);
-		}
-		100% {
-			background: skyBlue;
-			-webkit-transform: rotate(-180deg);
-		}
-	}
-	
 
 </style>
